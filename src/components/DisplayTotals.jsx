@@ -2,7 +2,7 @@ import { Grid, Segment } from "semantic-ui-react";
 import DisplayBalance from "./DisplayBalance";
 
 
-const DisplayBalances = ({
+const DisplayTotals = ({
     totalExpenses,
     totalIncome,
 }) => {
@@ -30,4 +30,4 @@ const DisplayBalances = ({
     );
 };
 
-export default DisplayBalances;
+export default DisplayTotals;

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-export const useBalance = () => {
+export const useBalanceDetails = () => {
     const entries = useSelector(state => state.entries);
     const {
         expense: totalExpenses, income: totalIncome,

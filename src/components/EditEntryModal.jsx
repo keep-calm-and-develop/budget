@@ -3,9 +3,12 @@ import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "semantic-ui-react";
 import { updateEntryAction } from "../actions/entries.actions";
 import EntryForm from "./EntryForm";
+import { closeEditModalAction } from "../actions/modals.actions";
+import useEntryDetails from "../hooks/useEntryDetails";
 
 
-const EditEntryModal = ({ entry, isOpen, onClose }) => {
+const EditEntryModal = () => {
+    const { entry } = useEntryDetails();
     const [description, setDescription] = useState(entry?.description ?? '');
     const [value, setValue] = useState(entry?.value ?? 0);
     const [isExpense, setIsExpense] = useState(entry?.isExpense ?? true);
@@ -20,13 +23,17 @@ const EditEntryModal = ({ entry, isOpen, onClose }) => {
 
     const dispatch = useDispatch();
 
+    const onClose = () => {
+        dispatch(closeEditModalAction());
+    };
+
     const onSave = () => {
         dispatch(updateEntryAction({ description, value, isExpense, id: entry.id }));
         onClose();
     };
 
     return (
-        <Modal open={isOpen}>
+        <Modal open={!!entry}>
             <Modal.Header>
                 Edit Entry
             </Modal.Header>

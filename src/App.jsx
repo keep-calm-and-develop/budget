@@ -8,10 +8,8 @@ import EntryLines from './components/EntryLines';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import { useBalance } from './hooks/useBalance';
-import useEntryDetails from './hooks/useEntryDetails';
 
 function App() {    
-    const { isOpen, currentEntry, openEntryEditModal, closeModal } = useEntryDetails();
     const { balance, totalExpenses, totalIncome } = useBalance();
 
     return (
@@ -24,16 +22,10 @@ function App() {
             />
             <DisplayBalances totalExpenses={totalExpenses} totalIncome={totalIncome} />
             <MainHeader title={'Transaction History'} type='h3' />
-            <EntryLines
-                openEntryEditModal={openEntryEditModal}
-            />
+            <EntryLines/>
             <MainHeader title={'Add Transaction'} type='h3' />
             <NewEntryForm />
-            <EditEntryModal
-                entry={currentEntry}
-                isOpen={isOpen}
-                onClose={closeModal}
-            />
+            <EditEntryModal />
         </Container>
     );
 }

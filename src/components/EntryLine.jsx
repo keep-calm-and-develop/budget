@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Button, Grid, Segment } from "semantic-ui-react";
 import { removeEntryAction } from "../actions/entries.actions";
+import { openEditModalAction } from "../actions/modals.actions";
 
 const EntryLine = ({
     entry: {
@@ -9,7 +10,6 @@ const EntryLine = ({
         value,
         isExpense = false,
     },
-    openEntryEditModal,
 }) => {
     const dispatch = useDispatch();
     return (
@@ -21,7 +21,7 @@ const EntryLine = ({
                         <Grid.Column width={3}>{value}</Grid.Column>
                         <Grid.Column width={4}>
                             <Button.Group>
-                                <Button onClick={() => openEntryEditModal(id)}>Edit</Button>
+                                <Button onClick={() => dispatch(openEditModalAction(id))}>Edit</Button>
                                 <Button onClick={() => dispatch(removeEntryAction(id))}>Remove</Button>
                             </Button.Group>
                         </Grid.Column>

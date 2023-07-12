@@ -2,7 +2,7 @@ import { Container } from "semantic-ui-react";
 import EntryLine from "./EntryLine";
 import { useSelector } from "react-redux";
 
-const EntryLines = ({ openEntryEditModal }) => {
+const EntryLines = () => {
     const entries = useSelector((state) => state.entries);
     return (
         <Container>
@@ -11,7 +11,6 @@ const EntryLines = ({ openEntryEditModal }) => {
                     <EntryLine
                         key={entry.id}
                         entry={entry}
-                        openEntryEditModal={openEntryEditModal}
                     />
                 ))
             }

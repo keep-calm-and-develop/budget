@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form } from 'semantic-ui-react';
+import { v4 as uuid } from 'uuid';
 import { addEntryAction } from '../actions/entries.actions';
 import ButtonSaveOrCancel from './ButtonSaveOrCancel';
 import EntryForm from './EntryForm';
@@ -12,7 +13,7 @@ const NewEntryForm = () => {
     const dispatch = useDispatch();
 
     const onSave = () => {
-        dispatch(addEntryAction({ description, value, isExpense }));
+        dispatch(addEntryAction({ description, value, isExpense, id: uuid() }));
         onCancel();
     };
     

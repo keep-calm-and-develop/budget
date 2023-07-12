@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "semantic-ui-react";
+import { updateEntryAction } from "../actions/entries.actions";
 import EntryForm from "./EntryForm";
 
 
-const EditEntryModal = ({ entry, isOpen, onClose, onSave }) => {
+const EditEntryModal = ({ entry, isOpen, onClose }) => {
     const [description, setDescription] = useState(entry?.description ?? '');
     const [value, setValue] = useState(entry?.value ?? 0);
     const [isExpense, setIsExpense] = useState(entry?.isExpense ?? true);
@@ -15,6 +17,13 @@ const EditEntryModal = ({ entry, isOpen, onClose, onSave }) => {
             setIsExpense(entry.isExpense);
         }
     }, [entry]);
+
+    const dispatch = useDispatch();
+
+    const onSave = () => {
+        dispatch(updateEntryAction({ description, value, isExpense, id: entry.id }));
+        onClose();
+    };
 
     return (
         <Modal open={isOpen}>
@@ -35,10 +44,7 @@ const EditEntryModal = ({ entry, isOpen, onClose, onSave }) => {
             </Modal.Content>
             <Modal.Actions>
                 <Button onClick={onClose}>Close</Button>
-                <Button onClick={() => {
-                    onSave({ description, value, isExpense, id: entry.id });
-                    onClose();
-                }} primary>Save</Button>
+                <Button onClick={onSave} primary>Save</Button>
             </Modal.Actions>
         </Modal>
     );

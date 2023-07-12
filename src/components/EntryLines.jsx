@@ -1,7 +1,7 @@
 import { Container } from "semantic-ui-react";
 import EntryLine from "./EntryLine";
 
-const EntryLines = ({ entries, deleteEntry, openEntryEditModal }) => {
+const EntryLines = ({ entries, openEntryEditModal }) => {
     return (
         <Container>
             {
@@ -9,7 +9,6 @@ const EntryLines = ({ entries, deleteEntry, openEntryEditModal }) => {
                     <EntryLine
                         key={entry.id}
                         entry={entry}
-                        deleteEntry={deleteEntry}
                         openEntryEditModal={openEntryEditModal}
                     />
                 ))

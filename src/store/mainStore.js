@@ -1,29 +1,21 @@
-import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import entriesReducer from '../reducers/entries.reducer';
 import modalsReducer from '../reducers/modals.reducer';
 import createSagaMiddleware from 'redux-saga';
-import initSagas from '../sagas';
+import { watchGetAllEntries as entriesSaga } from '../sagas/entriesSagas';
+
+const reducers = combineReducers({
+    entries: entriesReducer,
+    modals: modalsReducer,
+});
 
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
 
-const configureStore = () => {
-    const reducers = combineReducers({
-        entries: entriesReducer,
-        modals: modalsReducer,
-    });
-    
-    const store = createStore(
-        reducers,
-        compose(
-            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-            applyMiddleware(...middlewares)
-        )
-    );
-    
-    initSagas(sagaMiddleware);
+const store = configureStore({
+    reducer: reducers,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat([sagaMiddleware]),
+});
 
-    return store;
-}
+sagaMiddleware.run(entriesSaga);
 
-export default configureStore;
+export default store;

@@ -22,15 +22,15 @@ const entriesReducer = (state = initialEntries, action) => {
         case entriesTypes.POPULATE_ENTRIES: {
             return action.payload;
         }
-        case entriesTypes.ADD_ENTRY: {
+        case entriesTypes.ADD_ENTRY_RESULT: {
             const newEntries = state.concat({ ...action.payload });
             return newEntries;
         }
-        case entriesTypes.REMOVE_ENTRY: {
+        case entriesTypes.REMOVE_ENTRY_RESULT: {
             const newEntries = state.filter(entry => entry.id !== action.payload);
             return newEntries;
         }
-        case entriesTypes.UPDATE_ENTRY: {
+        case entriesTypes.UPDATE_ENTRY_RESULT: {
             const { id, description, value, isExpense } = action.payload;
             const newEntries = state.map((entry) => {
                 if (entry.id === id) {

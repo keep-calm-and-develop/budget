@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { call, fork, put, take, takeEvery } from 'redux-saga/effects';
+import { call, fork, put, take, takeLatest } from 'redux-saga/effects';
 import entriesTypes, { populateEntries, putEntryDetails } from '../actions/entries.actions';
 
 function* getAllEntries() {
@@ -26,6 +26,6 @@ function* getEntryDetails(id) {
 }
 
 export function* watchGetAllEntries() {
-    yield takeEvery(entriesTypes.GET_ENTRIES, getAllEntries);
+    yield takeLatest(entriesTypes.GET_ENTRIES, getAllEntries);
 }
 

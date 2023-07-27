@@ -2,55 +2,84 @@
     "entries": [
         {
             "id": "33f8c483-577a-42d3-800b-0899902e2189",
-            "description": "Salary",
+            "description": "Salary"
+        },
+        {
+            "id": "7e3f6817-0093-4e8d-8f29-a1e47275995a",
+            "description": "Grocery"
+        },
+        {
+            "id": "f71203f8-1442-440f-8e94-37d3e999619a",
+            "description": "Dividend"
+        },
+        {
+            "id": "0775b3b2-3983-4841-b12e-e04886815646",
+            "description": "Shopping"
+        },
+        {
+            "id": "87963501-4d7c-4874-8927-390a676349e4",
+            "description": "Clothes"
+        },
+        {
+            "id": "7e2240e3-323a-4948-9b78-8e267c053e80",
+            "description": "Rent"
+        },
+        {
+            "id": "5392937f-051e-4777-8044-730f9847f3b7",
+            "description": "Food"
+        },
+        {
+            "id": "61559387-5a9a-44b8-b411-29550134b8d4",
+            "description": "Gas"
+        },
+        {
+            "id": "8452382e-8809-4a12-b053-0c2747e3872d",
+            "description": "Salary"
+        }
+    ],
+    "values": [
+        {
+            "id": "33f8c483-577a-42d3-800b-0899902e2189",
             "isExpense": false,
             "value": 5200
         },
         {
             "id": "7e3f6817-0093-4e8d-8f29-a1e47275995a",
-            "description": "Grocery",
             "isExpense": true,
             "value": 50
         },
         {
             "id": "f71203f8-1442-440f-8e94-37d3e999619a",
-            "description": "Dividend",
             "isExpense": false,
             "value": 200
         },
         {
             "id": "0775b3b2-3983-4841-b12e-e04886815646",
-            "description": "Shopping",
             "isExpense": true,
             "value": 100
         },
         {
             "id": "87963501-4d7c-4874-8927-390a676349e4",
-            "description": "Clothes",
             "isExpense": true,
             "value": 50
         },
         {
             "id": "7e2240e3-323a-4948-9b78-8e267c053e80",
-            "description": "Rent",
             "isExpense": true,
             "value": 200
         },
         {
             "id": "5392937f-051e-4777-8044-730f9847f3b7",
-            "description": "Food",
             "isExpense": true,
             "value": 100
         },
         {
             "id": "61559387-5a9a-44b8-b411-29550134b8d4",
-            "description": "Gas",
             "isExpense": true,
             "value": 50
         },
         {
             "id": "8452382e-8809-4a12-b053-0c2747e3872d",
-            "description": "Salary",
             "isExpense": false,
             "value": 200
         }

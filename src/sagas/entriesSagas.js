@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { call, put, takeEvery } from 'redux-saga/effects';
-import entriesTypes, { populateEntries } from '../actions/entries.actions';
+import { call, fork, put, take, takeEvery } from 'redux-saga/effects';
+import entriesTypes, { populateEntries, putEntryDetails } from '../actions/entries.actions';
 
 function* getAllEntries() {
     try {
@@ -11,6 +11,21 @@ function* getAllEntries() {
     }
 }
 
+export function* getAllEntriesDetails() {
+    const { payload } = yield take(entriesTypes.POPULATE_ENTRIES);
+    for (let index = 0; index < payload.length; index++) {
+        const entry = payload[index];
+        yield fork(getEntryDetails, entry.id);
+        
+    }
+}
+
+function* getEntryDetails(id) {
+    const { data } = yield call(axios, `http://localhost:3001/values/${id}`);
+    yield put(putEntryDetails(id, data));
+}
+
 export function* watchGetAllEntries() {
     yield takeEvery(entriesTypes.GET_ENTRIES, getAllEntries);
 }
+

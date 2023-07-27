@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import entriesReducer from '../reducers/entries.reducer';
 import modalsReducer from '../reducers/modals.reducer';
 import createSagaMiddleware from 'redux-saga';
-import { watchGetAllEntries as entriesSaga } from '../sagas/entriesSagas';
+import initSagas from '../sagas';
 
 const reducers = combineReducers({
     entries: entriesReducer,
@@ -16,6 +16,6 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat([sagaMiddleware]),
 });
 
-sagaMiddleware.run(entriesSaga);
+initSagas(sagaMiddleware);
 
 export default store;

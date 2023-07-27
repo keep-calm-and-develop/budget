@@ -4,6 +4,21 @@ export const initialEntries = [];
 
 const entriesReducer = (state = initialEntries, action) => {
     switch (action.type) {
+        case entriesTypes.PUT_ENTRY_DETAILS: {
+            const { id, entry: { value, isExpense } } = action.payload;
+            const newEntries = state.map((entry) => {
+                if (entry.id === id) {
+                    return {
+                        description: entry.description,
+                        value,
+                        isExpense,
+                        id,
+                    };
+                }
+                return entry;
+            });
+            return newEntries;
+        }
         case entriesTypes.POPULATE_ENTRIES: {
             return action.payload;
         }

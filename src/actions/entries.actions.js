@@ -2,12 +2,17 @@
 const types = {
     GET_ENTRIES: 'GET_ENTRIES',
     POPULATE_ENTRIES: 'POPULATE_ENTRIES',
+    PUT_ENTRY_DETAILS: 'PUT_ENTRY_DETAILS',
     ADD_ENTRY: 'ADD_ENTRY',
     REMOVE_ENTRY: 'REMOVE_ENTRY',
     UPDATE_ENTRY: 'UPDATE_ENTRY',
 };
 
 export default types;
+
+export const putEntryDetails = (id, entry) => {
+    return ({ type: types.PUT_ENTRY_DETAILS, payload: { id, entry } });
+}
 
 export const populateEntries = (entries) => {
     return ({ type: types.POPULATE_ENTRIES, payload: entries });
